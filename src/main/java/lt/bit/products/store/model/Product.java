@@ -3,6 +3,8 @@ package lt.bit.products.store.model;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,11 +13,26 @@ import javax.persistence.Table;
 public class Product {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "product_id")
   private Integer id;
   private String name;
   private String description;
   private LocalDate created;
+
+  public static Product from(ProductRequest request, Integer id) {
+    Product product = from(request);
+    product.setId(id);
+    return product;
+  }
+
+  public static Product from(ProductRequest request) {
+    Product product = new Product();
+    product.setName(request.getName());
+    product.setDescription(request.getDescription());
+    product.setCreated(request.getCreated());
+    return product;
+  }
 
   public Integer getId() {
     return id;
