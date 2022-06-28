@@ -1,5 +1,6 @@
 package lt.bit.products.store.jobs;
 
+<<<<<<< HEAD
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
@@ -7,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 import lt.bit.products.store.model.ProductItems;
 import lt.bit.products.store.service.ProductItemsRepository;
+=======
+>>>>>>> origin/main
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Component;
 class Pricer {
 
   private final static Logger LOG = LoggerFactory.getLogger(Pricer.class);
+<<<<<<< HEAD
   private final ProductItemsRepository itemsRepository;
 
   Pricer(ProductItemsRepository itemsRepository) {
@@ -23,10 +27,15 @@ class Pricer {
   }
 
   @Scheduled(fixedRateString = "11000")
+=======
+
+  @Scheduled(fixedRateString = "5000")
+>>>>>>> origin/main
   void recalculateProductPrice() {
     LOG.info("Pricer job started");
     LOG.info("Recalculating product prices...");
 
+<<<<<<< HEAD
     Random random = new Random();
     List<ProductItems> items = itemsRepository.findAll();
     for (ProductItems item : items) {
@@ -48,5 +57,10 @@ class Pricer {
     }
 
     LOG.info("Product prices have been updated.");
+=======
+    // TODO
+
+    LOG.info("Product prices updated.");
+>>>>>>> origin/main
   }
 }
